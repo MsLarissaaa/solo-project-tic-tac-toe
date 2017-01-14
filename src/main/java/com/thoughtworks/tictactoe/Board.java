@@ -1,43 +1,42 @@
 package com.thoughtworks.tictactoe;
 
 import java.io.PrintStream;
-import java.util.ArrayList;
+
 
 public class Board {
 
     private String[] boardArray;
     private PrintStream printStream;
 
-    public Board(PrintStream printStream, String startingBoard) {
+    public Board(PrintStream printStream, String[] startingBoard) {
         this.printStream = printStream;
-        this.boardArray = startingBoard.split("");
-//        for (String elem: boardArray){
-////            System.out.print(elem + " ");
-//        }
+        this.boardArray = startingBoard;
     }
 
-    public void start() {
-        displayBoard();
-    }
 
-    private void displayBoard() {
+    public void display() {
         String boardString = "";
-        for (int ind = 1; ind < 3; ind++){
+        for (int ind = 0; ind < 2; ind++){
             boardString += boardArray[ind] + "|";
         }
-        boardString += boardArray[3] + "\n";
+        boardString += boardArray[2] + "\n";
         boardString += "-----\n";
-        for (int ind = 4; ind < 6; ind++){
+        for (int ind = 3; ind < 5; ind++){
             boardString += boardArray[ind] + "|";
         }
-        boardString += boardArray[6] + "\n";
+        boardString += boardArray[5] + "\n";
         boardString += "-----\n";
-        for (int ind = 7; ind < 9; ind++){
+        for (int ind = 6; ind < 8; ind++){
             boardString += boardArray[ind] + "|";
         }
-        boardString += boardArray[9];
+        boardString += boardArray[8];
 
         printStream.println(boardString);
+    }
+
+    public void update(int commandX) {
+        boardArray[commandX] = "X";
+        display();
     }
 
 }
